@@ -1,0 +1,21 @@
+﻿@inherits LayoutComponentBase
+<PageTitle>BlazorServer.CarServiceHub</PageTitle>
+@inject IJSRuntime JS
+<div class="page">
+    <main>
+        <Header/>
+        @Body
+        <Footer/>
+    </main>
+</div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeAsync<IJSObjectReference>("import", "../js/main.js");
+        }
+    }
+
+}

@@ -1,0 +1,19 @@
+﻿@page "/"
+@inject IJSRuntime JS
+<PageTitle>Car Service-Hub</PageTitle>
+<Home />
+<About />
+<Services />
+<Technicians />
+<Testimonials />
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeAsync<IJSObjectReference>("import", "../js/main.js");
+        }
+    }
+
+}
